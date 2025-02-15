@@ -18,6 +18,7 @@ update_stuff() {
 
 if [[ $(grep -E -i "gentoo" /etc/os-release) ]]; then
     update_stuff "sudo emerge --sync"                                                                           "Synced repositories; updating system packages..."
+    update_stuff "eix-update"
     update_stuff "sudo emerge --ask --verbose --update --deep --newuse @world --keep-going"                     "Updated system packages; updating live ebuilds..."
     update_stuff "sudo smart-live-rebuild"                                                                      "Updated live ebuilds; updating yazi plugins..."
 elif [[ $(grep -E -i "arch" /etc/os-release) ]]; then
