@@ -26,7 +26,8 @@ elif grep -qEi "arch" /etc/os-release ; then
     update_stuff "paru" "Updated system packages; updating yazi plugins"
 
 elif grep -qEi "nixos" /etc/os-release ; then
-    update_stuff "sudo nixos-rebuild --upgrade-all switch" "Updated system packages; updating yazi plugins..."
+    update_stuff "nix flake update --flake $HOME/.config/nixos-config && git -C $HOME/.config/nixos-config add flake.nix flake.lock && git -C $HOME/.config/nixos-config commit -m '(auto): update'"
+    update_stuff "sudo nixos-rebuild switch --flake $HOME/.config/nixos-config#NixOSBaby"
 
 fi
 
